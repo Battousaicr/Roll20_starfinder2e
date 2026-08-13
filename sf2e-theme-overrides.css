@@ -1,0 +1,226 @@
+/**********************************************************************************************************/
+/************************ STARFINDER SECOND EDITION THEME OVERRIDES v0.1 *********************************/
+/*
+   Presentation-only layer for the PF2e Roll20 sheet.
+   Goal: preserve the PF2e HTML structure, attributes, rolls, repeating sections,
+   sheet workers, NPC sheet, and tab behavior while replacing the Pathfinder visual palette.
+*/
+/**********************************************************************************************************/
+
+/* Palette
+   Void:       #07131f
+   Deep blue:  #0b2638
+   Tech blue:  #0d536a
+   Cyan:       #20d8e6
+   Ice:        #dffbff
+   Violet:     #6b3fb5
+   Magenta:    #b52c83
+   Panel:      #edf5f7
+*/
+
+.charsheet {
+  background: #07131f;
+}
+
+.sheet-backdrop {
+  border-color: #20d8e6;
+  background-color: #d9e7ea;
+  background-image:
+    linear-gradient(135deg, rgba(32, 216, 230, 0.10) 0%, rgba(107, 63, 181, 0.08) 45%, rgba(7, 19, 31, 0.08) 100%);
+}
+
+div.sheet-sf2e-logo {
+  display: grid;
+  width: 100%;
+  margin: 0 0 0.2em;
+  padding: 0.35em 0.5em;
+  background: linear-gradient(100deg, #07131f 0%, #0d536a 58%, #6b3fb5 100%);
+  border-left: 0.35em solid #20d8e6;
+  box-shadow: inset 0 -2px 0 rgba(32, 216, 230, 0.45);
+  transform: skewX(-5deg);
+}
+
+div.sheet-sf2e-logo span {
+  transform: skewX(5deg);
+}
+
+span.sheet-sf2e-logo-main {
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.25em;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 0.9em;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 8px rgba(32, 216, 230, 0.6);
+}
+
+span.sheet-sf2e-logo-edition {
+  color: #20d8e6;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-align: right;
+}
+
+h1 {
+  background-color: #0b2638;
+  color: #ffffff;
+  box-shadow: inset 0 -2px 0 #20d8e6;
+}
+
+h2 {
+  color: #ffffff;
+}
+
+div.sheet-column h1[data-i18n="character_sheet"] {
+  color: #0d536a;
+  -webkit-text-fill-color: #0d536a;
+  -webkit-text-stroke-width: 0;
+  text-shadow: 0 0 8px rgba(32, 216, 230, 0.18);
+}
+
+div.sheet-column h2[data-i18n="proficiency"],
+div.sheet-column div.sheet-character-prof,
+div.sheet-column div.sheet-character-action {
+  color: #0d536a;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  border-color: #0d536a;
+  background-color: #f8fcfd;
+  color: #07131f;
+}
+
+select.sheet-simple {
+  border-color: #0d536a;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  outline-color: #20d8e6;
+}
+
+button[type="roll"] {
+  background-color: #0d536a;
+  color: #ffffff;
+  border-color: #dffbff;
+  box-shadow: 0 0 5px rgba(13, 83, 106, 0.55);
+}
+
+button[type="roll"]:hover,
+div.sheet-strikes button[type="roll"]:not(:first-of-type):hover {
+  background-color: #20a9bd;
+}
+
+div.sheet-strikes button[type="roll"]:not(:first-of-type) {
+  background-color: #0b2638;
+}
+
+.sheet-darkred,
+label.sheet-sublabel span:last-child,
+div.sheet-ability-select select {
+  background-color: #0d536a;
+}
+
+div.sheet-ability-select select {
+  border-color: #0d536a;
+}
+
+div.sheet-ability-select span {
+  border-color: #0d536a;
+}
+
+div.sheet-background-color {
+  background-color: #0d536a;
+}
+
+input.sheet-circle,
+div.sheet-circle,
+span.sheet-display {
+  background-color: #126a7e;
+  border-color: #0b2638;
+}
+
+div.sheet-circle label span:first-child {
+  background-color: #0b2638;
+}
+
+div.sheet-tabs label:nth-of-type(1n+2) > span,
+div.sheet-options button[name="act_toggle_npc"],
+div.sheet-npc-general-options button[name="act_toggle_character"],
+div.sheet-npc-general-options button[name="act_toggle_npcspellcaster"] {
+  background-color: #e7f1f4;
+  color: #07131f;
+  box-shadow: 0 1px 1px #7c969d;
+}
+
+input.sheet-whisper-toggle[value*="gm"] + button[name*="whisper"],
+div.sheet-npc-general-options input[name="attr_toggles"][value*="npcspellcaster"] ~ button[name="act_toggle_npcspellcaster"],
+div.sheet-tabs input[type="checkbox"]:checked + span,
+div.sheet-tabs input[type="radio"]:checked + span {
+  color: #ffffff;
+  background-color: #0d536a;
+  box-shadow: inset 0 0 3px 1px #07131f, 0 0 5px rgba(32, 216, 230, 0.35);
+}
+
+button.sheet-settings-button {
+  border-color: #dffbff;
+  color: #dffbff;
+  background: #0b2638;
+}
+
+input[name="attr_toggles"][value*="class_dc"] ~ div.sheet-character div.sheet-classdc button.sheet-settings-button,
+input[name="attr_toggles"][value*="shield"] ~ div.sheet-character div.sheet-shield-grid button.sheet-settings-button,
+input[name="attr_toggles"][value*="armor_class"] ~ div.sheet-character div.sheet-armorclass-main button.sheet-settings-button,
+input[name="attr_toggles"][value*="perception"] ~ div.sheet-character div.sheet-perception button.sheet-settings-button[name*="perception"],
+input[name="attr_toggles"][value*="hitpoints"] ~ div.sheet-character div.sheet-hitpoints button.sheet-settings-button[name*="hitpoints"],
+input[name="attr_toggles"][value*="settings"] + button.sheet-settings-button,
+input[name="attr_toggles"][value*="settings"] + div > button.sheet-settings-button,
+.sheet-highlight-button {
+  background-color: #b52c83;
+}
+
+div.sheet-inv-display-grid span.sheet-collapse,
+div.sheet-repeating-grid span.sheet-collapse {
+  border-color: #0d536a;
+}
+
+span.sheet-npc-trait {
+  background-color: #0d536a;
+  border-color: #20d8e6;
+}
+
+span.sheet-npc-alignment-trait {
+  background-color: #6b3fb5;
+}
+
+span.sheet-npc-size-trait {
+  background-color: #14846f;
+}
+
+div.sheet-repeating-grid-display,
+div.sheet-inv-display-grid,
+div.sheet-repeating-grid,
+div.sheet-settings {
+  border-color: rgba(13, 83, 106, 0.45);
+}
+
+div.sheet-column div.sheet-character-action img {
+  filter: invert(28%) sepia(89%) saturate(1194%) hue-rotate(145deg) brightness(93%) contrast(94%);
+}
+
+div.sheet-pc-info {
+  background: linear-gradient(90deg, rgba(223, 251, 255, 0.74), rgba(237, 245, 247, 0.38));
+  border-bottom: 2px solid rgba(32, 216, 230, 0.65);
+}
+
+div.sheet-repeating h3,
+div.sheet-repeating label,
+div.sheet-tabs label {
+  color: #07131f;
+}

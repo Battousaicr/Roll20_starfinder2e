@@ -1,0 +1,8 @@
+{
+  "html": "starfinder2.html",
+  "css": "starfinder2.css",
+  "authors": "Starfinder 2e custom sheet project; based on Pathfinder Second Edition by Roll20",
+  "preview": "preview.png",
+  "instructions": "Early Starfinder Second Edition presentation fork based on Pathfinder Second Edition by Roll20. v0.1 intentionally preserves PF2e mechanics and changes presentation only.",
+  "legacy": true
+}
